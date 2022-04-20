@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客详情页</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/blog_detail.css">
+
+    <!-- 引入 editor.md 的依赖 -->
+    <link rel="stylesheet" href="./editor.md-master/css/editormd.min.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./editor.md-master/lib/marked.min.js"></script>
+    <script src="./editor.md-master/lib/prettify.min.js"></script>
+    <script src="./editor.md-master/editormd.js"></script>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="nav">
+        <img src="./image/刘雨昕.jpg" alt="">
+        <span class="title">我的博客系统</span>
+        <!-- 使用两个span把左右元素撑开 -->
+        <span class="spacer"></span>
+        <a href="blog_list.html">主页</a>
+        <a href="blog_edit.html">写博客</a>
+        <!-- 这里的showDeleteButton是给当前博客的用户作者看的，如果用户不是你的，就不会显示 删除 键 -->
+        <!-- 后面href 因为在Detail中已经有blog对象了，所以就直接取得到 -->
+        <a th:if="${showDeleteButton}" th:href="${'blog_delete?blogId=' + blog.blogId}">删除</a>
+        <a href="logout">注销</a>
+
+    </div>
+
+    <!-- 引入版心 -->
+    <div class="container">
+        <!-- 左侧版心，用来显示用户的信息 -->
+        <div class="container-left">
+            <!-- 用户详情 -->
+            <div class="card">
+                <!-- 用户头像 -->
+                <img src="./image/1.png" alt="">
+                <!-- 用户名字 -->
+                <h3 th:text="${user.username}"></h3>
+                <!-- gitee 地址 -->
+                <a href="https://gitee.com/yuanye12123/projects">gitee地址</a>
+                <!-- <br> -->
+                <a href="https://github.com/power152">github地址</a>
+                <!-- 显示文章分类的数目  -->
+                <div class="counter">
+                    <span>文章</span>
+                    <span>分类</span>
+
+                </div>
+                <div class="counter">
+                    <span>2</span>
+                    <span>1</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 右侧博客详情 -->
+        <div class="container-right">
+            <!-- 使用div放博客内容 -->
+            <div class="blog-content">
+                <!-- 博客标题 -->
+                <h3 th:text="${blog.title}"></h3>
+                <!-- 日期 -->
+                <div class="date" th:text="${blog.postTime}">
+                </div>
+                <!-- 正文 -->
+                <div th:text="${blog.content}" id="content" style="background-color:transparent">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // 取出要被渲染的字符串内容
+        let markdown = document.querySelector("#content").innerHTML;
+        // 清空原来的 div
+        // 注意左后一定要双引号，里面不能空格，不然胡抛出异常
+        document.querySelector("#content").innerHTML = "";
+        // 调用 editor.md 的一个 markdownToHTML 方法
+        // 要想能够调用, 也需要先引入 editor.md 的 js
+        editormd.markdownToHTML('content', { markdown: markdown });
+    </script>
+
+</body>
+
+</html>

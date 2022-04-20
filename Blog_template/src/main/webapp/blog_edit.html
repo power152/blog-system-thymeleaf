@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客编辑页</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/blog_edit.css">
+
+
+    <link rel="stylesheet" href="./editor.md-master/css/editormd.min.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./editor.md-master/lib/marked.min.js"></script>
+    <script src="./editor.md-master/lib/prettify.min.js"></script>
+    <script src="./editor.md-master/editormd.js"></script>
+</head>
+
+<body>
+
+    <!-- 导航栏 -->
+    <div class="nav">
+        <img src="./image/刘雨昕.jpg" alt="">
+        <span class="title">我的博客系统</span>
+        <!-- 使用两个span把左右元素撑开 -->
+        <span class="spacer"></span>
+        <a href="blog_list.html">主页</a>
+        <a href="#">写博客</a>
+        <a href="#">注销</a>
+
+    </div>
+    <!-- 版心 -->
+    <div class="blog-edit-container">
+        <form action="blog_edit" method="post" style="height: 100%">
+            <!-- 标题编辑区 -->
+            <div class="title">
+                <input type="text" id="title" autocomplete="off" placeholder="在这里输入标题" name="title">
+                <!-- <button id="submit">发布文章</button> -->
+                <input type="submit" id="submit" value="发布文章">
+            </div>
+            <!-- 内容编辑区 -->
+            <div id="editor">
+                <!-- 因为textare是一个隐藏的文本框，通过style属性来显示文本框里面的内容，通过savaHTMLToTextArea这个选项把用户编辑的文本放入textarea隐藏的文本框中 -->
+                <textarea name="content" style="display:none"></textarea>
+            </div>
+
+        </form>
+
+
+    </div>
+
+    <script>
+        // 初始化 editor.md
+        var editor = editormd("editor", {
+            // 这里的尺寸必须在这里设置. 设置样式会被 editormd 自动覆盖掉. 
+            width: "100%",
+            // 设定编辑器高度
+            height: "calc(100% - 50px)",
+            // 编辑器中的初始内容
+            markdown: "# 在这里写下一篇博客",
+            // 指定 editor.md-master 依赖的插件路径
+            path: "./editor.md-master/lib/",
+            // 通过这个属性把编辑器里面的内容传递给textarea里面
+            saveHTMLToTextArea: true
+        });
+    </script>
+</body>
+
+</html>

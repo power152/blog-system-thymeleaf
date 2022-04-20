@@ -1,0 +1,82 @@
+/* 这个文件是专门放登录页面的专属css */
+
+
+/* 设置版心, 让这个版心把页面填充满 */
+/* 在这个版心的中间位置, 放一个登录区域 */
+.login-container {
+    width: 100%;
+    height: calc(100% - 50px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* background-color: red; */
+}
+
+.login-dialog {
+    width: 400px;
+    height: 400px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    padding-top: 20px;
+}
+
+/* 登录标题 */
+.login-dialog h3 {
+    text-align: center;
+    padding: 40px 0;
+    font-size: 30px;
+}
+
+.login-dialog .row {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+}
+
+.login-dialog .row span {
+    display: block;
+    width: 100px;
+    /* 字体粗细 */
+    font-weight: 700;
+}
+
+.login-dialog .row input {
+    /* 去掉边框 */
+    border: none;
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    padding-left: 10px;
+
+    /* 去掉选中时有的轮廓线 */
+    outline: none;
+
+    border-radius: 10px;
+}
+
+/* 最后的登录按钮 */
+.login-dialog .row #submit {
+    width: 300px;
+    height: 40px;
+
+    color: white;
+    background-color: rgb(96, 146, 22);
+    font-size: 20px;
+
+    /* 去掉边框 */
+    border: none;
+    border-radius: 20px;
+
+
+}
+
+/* 点击效果 */
+.login-dialog .row #submit:active {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+}

@@ -1,0 +1,25 @@
+/* 这个文件是博客详情页专属样式 */
+
+
+.blog-content {
+    padding: 30px;
+}
+
+/* 博客标题 */
+.blog-content h3 {
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* 日期 */
+.blog-content .date {
+    text-align: center;
+    color: rgb(8, 106, 8);
+    padding: 10px 0;
+}
+
+/* 正文 */
+.blog-content p {
+    text-indent: 2em;
+    padding: 10px 0;
+}
